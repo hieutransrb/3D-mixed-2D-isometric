@@ -1,0 +1,177 @@
+[gd_scene load_steps=25 format=3 uid="uid://wib2mttqr82a"]
+
+[ext_resource type="Texture2D" uid="uid://7ywjw8cm767u" path="res://0.png" id="1_537fb"]
+[ext_resource type="Texture2D" uid="uid://b72jaoqoo5jfj" path="res://texture_07.png" id="1_pxesq"]
+[ext_resource type="Script" path="res://CharacterBody3D.gd" id="2_qhltp"]
+[ext_resource type="PackedScene" uid="uid://cnk1s4jbd6p2g" path="res://model.tscn" id="3_p62ey"]
+[ext_resource type="Script" path="res://ColorRect.gd" id="3_sdyqo"]
+[ext_resource type="Script" path="res://MainCamera.gd" id="3_tr6de"]
+[ext_resource type="Script" path="res://PlayerCamera.gd" id="5_n70l1"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_0kvc0"]
+vertices = PackedVector3Array(-24.5, 0.5, 3.75, -3.25, 0.5, 3.75, -3, 0.5, 3, -24.5, 0.5, 3.75, -3, 0.5, 3, -1.75, 0.5, 2.75, -1.75, 0.5, -24.5, -24.5, 0.5, -24.5, -1, 0.5, 3, -0.75, 0.5, 4, 24.5, 0.5, 4, -1.75, 0.5, 2.75, -1, 0.5, 3, 24.5, 0.5, 4, 24.5, 0.5, -24.5, -1.75, 0.5, -24.5, -2, 0.5, 24.5, -2, 0.5, 5.25, -3, 0.5, 5, -2, 0.5, 24.5, -3, 0.5, 5, -3.25, 0.5, 3.75, -24.5, 0.5, 3.75, -24.5, 0.5, 24.5, -1, 0.5, 5, -2, 0.5, 5.25, -2, 0.5, 24.5, -0.75, 0.5, 4, -1, 0.5, 5, -2, 0.5, 24.5, 24.5, 0.5, 24.5, 24.5, 0.5, 4)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 5), PackedInt32Array(5, 3, 6), PackedInt32Array(6, 3, 7), PackedInt32Array(10, 9, 8), PackedInt32Array(12, 11, 13), PackedInt32Array(13, 11, 15), PackedInt32Array(13, 15, 14), PackedInt32Array(18, 17, 16), PackedInt32Array(20, 19, 21), PackedInt32Array(21, 19, 22), PackedInt32Array(22, 19, 23), PackedInt32Array(26, 25, 24), PackedInt32Array(28, 27, 29), PackedInt32Array(29, 27, 31), PackedInt32Array(29, 31, 30)]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tgj0r"]
+albedo_texture = ExtResource("1_pxesq")
+uv1_scale = Vector3(10, 10, 10)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_k7pfl"]
+material = SubResource("StandardMaterial3D_tgj0r")
+size = Vector2(50, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ww4s5"]
+size = Vector3(50, 1, 50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_glatl"]
+albedo_color = Color(0.181134, 0.000161527, 0.546247, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_m2e5j"]
+material = SubResource("StandardMaterial3D_glatl")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h3ydq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0m3l8"]
+radius = 0.2
+height = 1.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_4rcvp"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4wbq0"]
+
+[sub_resource type="Sky" id="Sky_wanbt"]
+sky_material = SubResource("ProceduralSkyMaterial_4wbq0")
+
+[sub_resource type="Environment" id="Environment_558ct"]
+background_mode = 2
+sky = SubResource("Sky_wanbt")
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_fsibu"]
+
+[sub_resource type="SystemFont" id="SystemFont_ur8qv"]
+
+[sub_resource type="Theme" id="Theme_0auwx"]
+default_font = SubResource("SystemFont_ur8qv")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0kn56"]
+albedo_color = Color(1, 1, 0.0352941, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_2gun3"]
+material = SubResource("StandardMaterial3D_0kn56")
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.2
+
+[node name="main" type="Node3D"]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_0kvc0")
+
+[node name="Ground" type="MeshInstance3D" parent="NavigationRegion3D"]
+layers = 2
+mesh = SubResource("PlaneMesh_k7pfl")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Ground/StaticBody3D"]
+shape = SubResource("BoxShape3D_ww4s5")
+
+[node name="Obstacle" type="MeshInstance3D" parent="NavigationRegion3D"]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -2, 0.5, 4)
+mesh = SubResource("BoxMesh_m2e5j")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Obstacle"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Obstacle/StaticBody3D"]
+shape = SubResource("BoxShape3D_h3ydq")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="NavigationRegion3D/Obstacle"]
+
+[node name="Tree1" type="Sprite3D" parent="NavigationRegion3D"]
+layers = 2
+centered = false
+axis = 1
+double_sided = false
+texture_filter = 0
+texture = ExtResource("1_537fb")
+
+[node name="Tree2" type="Sprite3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+layers = 2
+centered = false
+axis = 1
+double_sided = false
+texture_filter = 0
+texture = ExtResource("1_537fb")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.5, -0.75, 0.433013, 0, 0.5, 0.866025, -0.866025, -0.433013, 0.25, 0, 10, 0)
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.76902)
+script = ExtResource("2_qhltp")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Player"]
+path_desired_distance = 0.1
+target_desired_distance = 0.1
+debug_enabled = true
+debug_path_custom_color = Color(1, 0, 0, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_0m3l8")
+
+[node name="Model" parent="Player" instance=ExtResource("3_p62ey")]
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+handle_input_locally = false
+canvas_cull_mask = 4293918720
+size = Vector2i(1280, 720)
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport" groups=["cameras"]]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 30, 52)
+cull_mask = 1
+projection = 1
+size = 6.4
+script = ExtResource("5_n70l1")
+
+[node name="Camera2D" type="Camera3D" parent="." groups=["cameras"]]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 30, -3.12872)
+cull_mask = 1048574
+projection = 1
+current = true
+size = 6.4
+script = ExtResource("3_tr6de")
+
+[node name="3DProjection" type="Sprite3D" parent="Camera2D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -3.46491, -30)
+layers = 2
+axis = 1
+double_sided = false
+texture = SubResource("ViewportTexture_4rcvp")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_558ct")
+camera_attributes = SubResource("CameraAttributesPractical_fsibu")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 228.0
+offset_bottom = 73.0
+color = Color(0.623529, 1, 1, 0.52549)
+script = ExtResource("3_sdyqo")
+
+[node name="FPS" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_right = 202.0
+offset_bottom = 56.0
+theme = SubResource("Theme_0auwx")
+text = "f/s"
+
+[node name="Target" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.1, 0)
+mesh = SubResource("CylinderMesh_2gun3")
+
+[connection signal="input_event" from="NavigationRegion3D/Ground/StaticBody3D" to="Player" method="_on_static_body_3d_input_event"]

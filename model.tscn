@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnk1s4jbd6p2g"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gb5ut"]
+albedo_color = Color(0, 0.541176, 0.882353, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_nrflr"]
+material = SubResource("StandardMaterial3D_gb5ut")
+top_radius = 0.2
+bottom_radius = 0.2
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7o8cm"]
+albedo_color = Color(0.933326, 4.81308e-06, 9.62615e-07, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_b55rw"]
+material = SubResource("StandardMaterial3D_7o8cm")
+size = Vector3(0.2, 0.2, 0.2)
+
+[node name="Model" type="Node3D"]
+
+[node name="body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("CylinderMesh_nrflr")
+
+[node name="head" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.171991, 0.788466, 0)
+mesh = SubResource("BoxMesh_b55rw")
