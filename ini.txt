@@ -1,0 +1,11 @@
+Inventory
+C:\Users\Sarah\Downloads\Jx2AnhEm.online-game\ui\µÚÈý°æ\Ö÷½çÃæ-ÎïÆ·À¸.ini
+C:\Users\Sarah\Downloads\Jx2AnhEm.online-game\ui\Common\role_resource.ini
+C:\Users\Sarah\Downloads\Jx2AnhEm.online-game\ui\µÚÈý°æ\Ö÷½çÃæ-ÎïÆ·À¸-À©Õ¹.ini
+Stat
+C:\Users\Sarah\Downloads\Jx2AnhEm.online-game\ui\µÚÈý°æ\Ö÷½çÃæ-Íæ¼ÒÐÅÏ¢·ÖÒ³-¹«ÓÃµ×Í¼.ini
+C:\Users\Sarah\Downloads\Jx2AnhEm.online-game\ui\µÚÈý°æ\Ö÷½çÃæ-Íæ¼ÒÐÅÏ¢·ÖÒ³-ÊôÐÔ×°±¸.ini
+C:\Users\Sarah\Downloads\Jx2AnhEm.online-game\ui\µÚÈý°æ\Ö÷½çÃæ-Íæ¼ÒÐÅÏ¢·ÖÒ³-»ù±¾.ini
+C:\Users\Sarah\Downloads\Jx2AnhEm.online-game\ui\µÚÈý°æ\Ö÷½çÃæ-Íæ¼ÒÐÅÏ¢·ÖÒ³-³èÎï.ini
+C:\Users\Sarah\Downloads\Jx2AnhEm.online-game\ui\µÚÈý°æ\Ö÷½çÃæ-Íæ¼ÒÐÅÏ¢·ÖÒ³-Ê¦Í½.ini
+C:\Users\Sarah\Downloads\Jx2AnhEm.online-game\ui\µÚÈý°æ\Ö÷½çÃæ-Íæ¼ÒÐÅÏ¢·ÖÒ³-»éÒö.ini
